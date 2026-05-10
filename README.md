@@ -1,9 +1,9 @@
 # Sprint-2-Web-Develpment-JS
-Sprint 02 - Web Development - FimaAI
+<h1>Sprint 02 - Web Development - FimaAI</h1><br>
 
-Grupo:
+<h2>Grupo:<h2><br>
 
-Arthur Henrique - RM:
-Enzo Dias - RM:
-Guilherme Freire - RM:
-João Gabriel - RM:
+<p>Arthur Henrique - RM:</p><br>
+<p>Enzo Dias - RM:</p><br>
+<p>Guilherme Freire - RM:</p><br>
+<p>João Gabriel - RM:</p><br>
