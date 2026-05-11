@@ -44,6 +44,10 @@ const confirmarLogin = botaoConfirmar.addEventListener("click", ()=>{
 
     if(listaCadastrados.includes(usuario.value) && listaSenhas.includes(senha.value)){
         alert(`Bem vindo, ${usuario.value}!`);
+        textoTela("sub-titulo", "Login realizado com sucesso!");
+        botaoLogin.style.display = "none";
+        botaoCadastro.style.display = "none";
+        formularioLogin.style.display = "none";
         return;
     }else{
         alert("Senha ou Login incorretos! Tente Novamente!");
