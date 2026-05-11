@@ -23,6 +23,7 @@ const formularioCadastro = document.getElementById("form-cadastro")
 clicarBotao(botaoCadastro, "sub-titulo", "Cadastro");
 
 const clicarLogin = botaoLogin.addEventListener("click", () =>{
+    textoTela("h1", "FilmaAI");
     textoTela("sub-titulo", "Faça seu Login:")
     botaoLogin.style.display = "none";
     botaoCadastro.style.display = "block";
@@ -38,39 +39,51 @@ const clicarCadastro = botaoCadastro.addEventListener("click", () =>{
     formularioLogin.style.display = "none";
 })
 
-const confirmarLogin = botaoConfirmar.addEventListener("click", ()=>{
-    let usuario = document.getElementById("usuario")
-    let senha = document.getElementById("senha");
+const confirmarLogin = botaoConfirmar.addEventListener("click", () => {
+    let usuario = document.getElementById("usuario").value;
+    let senha = document.getElementById("senha").value;
 
-    if(listaCadastrados.includes(usuario.value) && listaSenhas.includes(senha.value)){
-        alert(`Bem vindo, ${usuario.value}!`);
-        textoTela("sub-titulo", "Login realizado com sucesso!");
+    let i = 0;
+    let loginSucesso = false; 
+
+    while (i < listaCadastrados.length) {
+        if (usuario === listaCadastrados[i] && senha === listaSenhas[i]) {
+            loginSucesso = true;
+            break;
+        }
+        i++;
+    }
+
+    if (loginSucesso) {
+        alert(`Bem vindo, ${usuario}!`);
+        textoTela("h1", `Bem vindo, ${usuario}!`);
+        textoTela("sub-titulo", "Login realizado com Sucesso!");
+    
         botaoLogin.style.display = "none";
         botaoCadastro.style.display = "none";
         formularioLogin.style.display = "none";
-        return;
-    }else{
+        console.log("Login correto!");
+    } else {
         alert("Senha ou Login incorretos! Tente Novamente!");
-        return;
     }
-})
+});
 
 const confirmarCadastro = botaoConfirmarCadastro.addEventListener("click", ()=>{
-    let AddUsuario = document.getElementById("addUsuario")
-    let AddSenha = document.getElementById("addSenha")
-    console.log(addUsuario.value);
+    let addUsuario = document.getElementById("addUsuario").value;
+    let addSenha = document.getElementById("addSenha").value;
+    console.log(addUsuario);
 
-    if(AddSenha.value == ""){
+    if(addSenha == ""){
         alert("Preencha com uma senha!");
         return;
-    }else if(addUsuario.value == ""){
+    }else if(addUsuario == ""){
         alert("Escolha um login!")
     }else{
-        textoTela("h1", `Bem vindo, ${AddUsuario.value}!`);
+        textoTela("h1", `Bem vindo, ${addUsuario}!`);
         textoTela("sub-titulo", "Cadastro realizado com sucesso!");
         formularioCadastro.style.display = "none";
-        listaCadastrados.push(AddUsuario.value);
-        listaSenhas.push(AddSenha.value);
+        listaCadastrados.push(addUsuario);
+        listaSenhas.push(addSenha);
         console.log(listaCadastrados);
         console.log(listaSenhas)
         return;
