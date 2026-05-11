@@ -1,4 +1,5 @@
 let listaCadastrados = [];
+let listaSenhas = [];
 
 
 function textoTela(id, texto){
@@ -39,33 +40,36 @@ const clicarCadastro = botaoCadastro.addEventListener("click", () =>{
 
 const confirmarLogin = botaoConfirmar.addEventListener("click", ()=>{
     let usuario = document.getElementById("usuario")
+    let senha = document.getElementById("senha");
 
-    if(usuario.value == ''){
-        alert('Informe algum nome!');
+    if(listaCadastrados.includes(usuario.value) && listaSenhas.includes(senha.value)){
+        alert(`Bem vindo, ${usuario.value}!`);
         return;
     }else{
-        textoTela("h1", `Bem vindo, ${usuario.value}!`);
-        textoTela("sub-titulo", "Login Realizado com sucesso!");
-        formularioLogin.style.display = "none";
+        alert("Senha ou Login incorretos! Tente Novamente!");
+        return;
     }
 })
 
 const confirmarCadastro = botaoConfirmarCadastro.addEventListener("click", ()=>{
-    let AddUsuario = document.getElementById("AddUsuario")
-    let AddSenha = document.getElementById("AddSenha")
-    let AddSenha2 = document.getElementById("AddSenha-2")
+    let AddUsuario = document.getElementById("addUsuario")
+    let AddSenha = document.getElementById("addSenha")
+    console.log(addUsuario.value);
 
-    if(AddSenha.value != AddSenha2.value){
-        alert("As senhas precisam ser iguais!");
-        return
-    }
-
-    if(AddUsuario.value == "" || AddSenha.value == "" || AddSenha2.value == ''){
-        alert('Preencha o campo de usuário!');
+    if(AddSenha.value == ""){
+        alert("Preencha com uma senha!");
         return;
+    }else if(addUsuario.value == ""){
+        alert("Escolha um login!")
     }else{
         textoTela("h1", `Bem vindo, ${AddUsuario.value}!`);
         textoTela("sub-titulo", "Cadastro realizado com sucesso!");
         formularioCadastro.style.display = "none";
+        listaCadastrados.push(AddUsuario.value);
+        listaSenhas.push(AddSenha.value);
+        console.log(listaCadastrados);
+        console.log(listaSenhas)
+        return;
     }
 })
+
