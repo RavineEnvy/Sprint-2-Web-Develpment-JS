@@ -1,5 +1,6 @@
 let listaCadastrados = [];
 
+
 function textoTela(id, texto){
     let campo = document.getElementById(id);
     campo.textContent = texto;
@@ -35,7 +36,6 @@ const clicarCadastro = botaoCadastro.addEventListener("click", () =>{
     formularioCadastro.style.display = "block";
     formularioLogin.style.display = "none";
 })
-
 
 const confirmarLogin = botaoConfirmar.addEventListener("click", ()=>{
     let usuario = document.getElementById("usuario")
