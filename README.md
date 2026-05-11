@@ -1,4 +1,3 @@
-# Sprint-2-Web-Develpment-JS
 <h1>Sprint 02 - Web Development - FimaAI</h1><br>
 
 <h2>Grupo:<h2><br>
