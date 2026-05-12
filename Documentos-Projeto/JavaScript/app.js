@@ -1,6 +1,56 @@
 let listaCadastrados = [];
 let listaSenhas = [];
 
+let desejaAcessar = prompt(`Deseja acessar o site? Responda apenas com "sim" ou "não"!`);
+
+const botaoLogin = document.getElementById("btn-login");
+const botaoCadastro = document.getElementById("btn-cadastro");
+const botaoConfirmar = document.getElementById("btn-confirmar");
+const botaoConfirmarCadastro = document.getElementById("btn-confirmar-Cadastro");
+const formularioLogin = document.getElementById("form-login");
+const formularioCadastro = document.getElementById("form-cadastro");
+const botaoSlidePrev = document.getElementById("btn-slide-prev");
+const botaoSlideNext = document.getElementById("btn-slide-next");
+const slides = document.querySelectorAll(".slides img");
+
+botaoSlidePrev.style.display = "none";
+botaoSlideNext.style.display = "none";
+
+let slideIndex = 0;
+let intervaloID = null;
+
+
+function initializeSlider(){
+
+    if(slides.length > 0){
+        slides[slideIndex].classList.add("displaySlide");
+        intervaloID = setInterval(nextSlide, 5000)
+    }
+}
+
+function showSlide(index){
+
+    if(index >= slides.length){
+        slideIndex = 0;
+    }else if(index < 0){
+        slideIndex = slides.length - 1;
+    }
+
+    slides.forEach(slide => {
+        slide.classList.remove("displaySlide");
+    });
+    slides[slideIndex].classList.add("displaySlide");
+}
+
+function prevSlide(){
+    slideIndex--;
+    showSlide(slideIndex);
+}
+
+function nextSlide(){
+    slideIndex++;
+    showSlide(slideIndex);
+}
 
 function textoTela(id, texto){
     let campo = document.getElementById(id);
@@ -13,80 +63,87 @@ function clicarBotao(variavel, id, texto){
     });
 }
 
-const botaoLogin = document.getElementById("btn-login");
-const botaoCadastro = document.getElementById("btn-cadastro");
-const botaoConfirmar = document.getElementById("btn-confirmar");
-const botaoConfirmarCadastro = document.getElementById("btn-confirmar-Cadastro")
-const formularioLogin = document.getElementById("form-login");
-const formularioCadastro = document.getElementById("form-cadastro")
 
-clicarBotao(botaoCadastro, "sub-titulo", "Cadastro");
+if(desejaAcessar == "sim"){
 
-const clicarLogin = botaoLogin.addEventListener("click", () =>{
-    textoTela("h1", "FilmaAI");
-    textoTela("sub-titulo", "Faça seu Login:")
-    botaoLogin.style.display = "none";
-    botaoCadastro.style.display = "block";
-    formularioLogin.style.display = "block";
-    formularioCadastro.style.display ="none"
-})
+    clicarBotao(botaoCadastro, "sub-titulo", "Cadastro");
 
-const clicarCadastro = botaoCadastro.addEventListener("click", () =>{
-    textoTela("sub-titulo", "Faça seu Cadastro:")
-    botaoCadastro.style.display = "none";
-    botaoLogin.style.display = "block";
-    formularioCadastro.style.display = "block";
-    formularioLogin.style.display = "none";
-})
-
-const confirmarLogin = botaoConfirmar.addEventListener("click", () => {
-    let usuario = document.getElementById("usuario").value;
-    let senha = document.getElementById("senha").value;
-
-    let i = 0;
-    let loginSucesso = false; 
-
-    while (i < listaCadastrados.length) {
-        if (usuario === listaCadastrados[i] && senha === listaSenhas[i]) {
-            loginSucesso = true;
-            break;
-        }
-        i++;
-    }
-
-    if (loginSucesso) {
-        alert(`Bem vindo, ${usuario}!`);
-        textoTela("h1", `Bem vindo, ${usuario}!`);
-        textoTela("sub-titulo", "Login realizado com Sucesso!");
-    
+    const clicarLogin = botaoLogin.addEventListener("click", () =>{
+        textoTela("h1", "FilmaAI");
+        textoTela("sub-titulo", "Faça seu Login:")
         botaoLogin.style.display = "none";
+        botaoCadastro.style.display = "block";
+        formularioLogin.style.display = "block";
+        formularioCadastro.style.display ="none"
+    })
+
+    const clicarCadastro = botaoCadastro.addEventListener("click", () =>{
+        textoTela("sub-titulo", "Faça seu Cadastro:")
         botaoCadastro.style.display = "none";
+        botaoLogin.style.display = "block";
+        formularioCadastro.style.display = "block";
         formularioLogin.style.display = "none";
-        console.log("Login correto!");
-    } else {
-        alert("Senha ou Login incorretos! Tente Novamente!");
-    }
-});
+    })
 
-const confirmarCadastro = botaoConfirmarCadastro.addEventListener("click", ()=>{
-    let addUsuario = document.getElementById("addUsuario").value;
-    let addSenha = document.getElementById("addSenha").value;
-    console.log(addUsuario);
+    const confirmarLogin = botaoConfirmar.addEventListener("click", () => {
+        let usuario = document.getElementById("usuario").value;
+        let senha = document.getElementById("senha").value;
 
-    if(addSenha == ""){
-        alert("Preencha com uma senha!");
-        return;
-    }else if(addUsuario == ""){
-        alert("Escolha um login!")
-    }else{
-        textoTela("h1", `Bem vindo, ${addUsuario}!`);
-        textoTela("sub-titulo", "Cadastro realizado com sucesso!");
-        formularioCadastro.style.display = "none";
-        listaCadastrados.push(addUsuario);
-        listaSenhas.push(addSenha);
-        console.log(listaCadastrados);
-        console.log(listaSenhas)
-        return;
-    }
-})
+        let i = 0;
+        let loginSucesso = false; 
+
+        while (i < listaCadastrados.length) {
+            if (usuario === listaCadastrados[i] && senha === listaSenhas[i]) {
+                loginSucesso = true;
+                break;
+            }
+            i++;
+        }
+
+        if (loginSucesso) {
+            alert(`Login realizado com sucesso.`);
+            textoTela("h1", "FilmaAi");
+            textoTela("sub-titulo", "A Leitura que fala por Você!");
+            textoTela("paragrafo", `Seja muito bem vindo, ${usuario}. Aqui está uma apresentação do nosso sistema de câmera.`)
+            botaoLogin.style.display = "none";
+            botaoCadastro.style.display = "none";
+            formularioLogin.style.display = "none";
+            botaoSlidePrev.style.display = "inline";
+            botaoSlideNext.style.display = "inline";
+            initializeSlider()
+            console.log("Login correto!");
+        }else{
+            alert("Senha ou Login incorretos! Tente Novamente!");
+        }
+    });
+
+    const confirmarCadastro = botaoConfirmarCadastro.addEventListener("click", ()=>{
+        let addUsuario = document.getElementById("addUsuario").value;
+        let addSenha = document.getElementById("addSenha").value;
+        console.log(addUsuario);
+
+        if(addSenha == ""){
+            alert("Preencha com uma senha!");
+            return;
+        }else if(addUsuario == ""){
+            alert("Escolha um login!")
+        }else{
+            textoTela("h1", `Bem vindo, ${addUsuario}!`);
+            textoTela("sub-titulo", "Cadastro realizado com sucesso!");
+            formularioCadastro.style.display = "none";
+            listaCadastrados.push(addUsuario);
+            listaSenhas.push(addSenha);
+            console.log(listaCadastrados);
+            console.log(listaSenhas)
+            return;
+        }
+    })
+
+
+}else{
+    textoTela("h1", "Até mais!");
+    textoTela("sub-titulo", "");
+    botaoLogin.style.display = "none";
+    botaoCadastro.style.display = "none";
+}
 

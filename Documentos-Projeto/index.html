@@ -10,9 +10,9 @@
     <header>
         <h1 id="h1">FilmaAI</h1>
         <h2 id="sub-titulo">A Leitura que fala por Você!</h2>
-        <nav>
-            <button id="btn-login" type="button">Login</button>
-            <button id="btn-cadastro" type="button">Cadastre-se</button>
+        <nav class="nav-btn">
+            <button id="btn-login" class="btn"  type="button">Login</button>
+            <button id="btn-cadastro" class="btn" type="button">Cadastre-se</button>
         </nav>
     </header>
     <main>
@@ -27,7 +27,17 @@
             <input type="password" id="addSenha" placeholder="Defina uma Senha">
             <button id="btn-confirmar-Cadastro" type="button">Confirmar Cadastro</button>
         </section>
-
+        <div>
+            <p id="paragrafo"></p>
+        </div>
+        <div class="slider">
+            <div class="slides">
+                <img  class="slide" src="public/logo filmaAI.png" alt="logo">
+                <img  class="slide" src="public/camera-filmaai.png" alt="camera">
+            </div>
+            <button id="btn-slide-prev" class="prev" onclick="prevSlide()">&#10094</button>
+            <button id="btn-slide-next" class="next" onclick="nextSlide()">&#10095</button>
+        </div>
     </main>
     <script src="JavaScript/app.js"></script>
 </body>
