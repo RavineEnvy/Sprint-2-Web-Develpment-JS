@@ -5,12 +5,13 @@
 }
 
 body {
-    background-color: #000000;
+    background-color: #1c1c1c;
     color: white;
     font-family: Arial, sans-serif;
     text-align: center;
     margin: auto;
 }
+
 
 input{
     border-radius: 12px;
@@ -56,6 +57,9 @@ img.displaySlide{
 }
 
 .slider button{
+    font-size: 2rem;
+    border-radius: 30px;
+    padding: 0px 1rem 0px 1rem;
     position: absolute;
     top: 45%;
     transform: translateY(-50%);
@@ -80,13 +84,32 @@ img.displaySlide{
 }
 
 p{
-    margin-top: 15px;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h2{
+    
+    font-weight: lighter;
+    color:#ed145b;
+    font-size: 3rem;
+    background-color: rgb(0, 0, 0);
+    text-transform: uppercase;
 }
 
 body h1{
-    margin-top: 15px;
-    color: #ed145b;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 5rem;
+    margin-top: 0;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+h1 span{
+    color: transparent;
+    -webkit-text-stroke: 3px #ed145b;
 }
 
 #form-login{

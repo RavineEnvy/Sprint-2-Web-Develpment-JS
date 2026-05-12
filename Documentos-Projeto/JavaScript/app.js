@@ -54,7 +54,7 @@ function nextSlide(){
 
 function textoTela(id, texto){
     let campo = document.getElementById(id);
-    campo.textContent = texto;
+    campo.innerHTML = texto;
 }
 
 function clicarBotao(variavel, id, texto){
@@ -69,7 +69,7 @@ if(desejaAcessar == "sim"){
     clicarBotao(botaoCadastro, "sub-titulo", "Cadastro");
 
     const clicarLogin = botaoLogin.addEventListener("click", () =>{
-        textoTela("h1", "FilmaAI");
+        textoTela("h1", `FILMA <span>AI</span>`);
         textoTela("sub-titulo", "Faça seu Login:")
         botaoLogin.style.display = "none";
         botaoCadastro.style.display = "block";
@@ -102,7 +102,7 @@ if(desejaAcessar == "sim"){
 
         if (loginSucesso) {
             alert(`Login realizado com sucesso.`);
-            textoTela("h1", "FilmaAi");
+            textoTela("h1", `FILMA <span>AI</span>`);
             textoTela("sub-titulo", "A Leitura que fala por Você!");
             textoTela("paragrafo", `Seja muito bem vindo, ${usuario}. Aqui está uma apresentação do nosso sistema de câmera.`)
             botaoLogin.style.display = "none";
