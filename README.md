@@ -2,7 +2,7 @@
 
 <h2>Grupo:<h2><br>
 
-<p>Arthur Henrique - RM:</p><br>
-<p>Enzo Dias - RM:</p><br>
-<p>Guilherme Freire - RM:</p><br>
-<p>João Gabriel - RM:</p><br>
+<p>Arthur Henrique - RM: 569499</p><br>
+<p>Enzo Dias - RM: 569866</p><br>
+<p>Guilherme Freire - RM: 570669</p><br>
+<p>João Gabriel - RM: 573891</p><br>
